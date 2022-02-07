@@ -15,5 +15,7 @@ public class Student extends  User{
     private Set<Course> likedCourses ;
 
 
-
+    public Student(String username, String password) {
+        super(username, password);
+    }
 }
