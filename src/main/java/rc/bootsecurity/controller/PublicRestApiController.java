@@ -20,9 +20,9 @@ public class PublicRestApiController {
     }
 
     // Available to all authenticated users
-    @GetMapping("test")
+    @GetMapping("registration")
     public String test1(){
-        return "API Test";
+        return "NEW Registration here YEAAAH !";
     }
 
     // Available to managers
@@ -33,7 +33,7 @@ public class PublicRestApiController {
 
     // Available to ROLE_ADMIN
     @GetMapping("admin/users")
-    public List<User> users(){
-        return this.userRepository.findAll();
+    public String users(){
+        return "@@@@@@@@@@@@@@@@@@@@@@@@";
     }
 }

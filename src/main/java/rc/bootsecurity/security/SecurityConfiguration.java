@@ -40,11 +40,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 // add jwt filters (1. authentication, 2. authorization)
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(),  this.userRepository))
+                .antMatcher("/registration")
                 .authorizeRequests()
                 // configure access rules
+                .antMatchers(HttpMethod.POST, "/").permitAll()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
-                .antMatchers("/api/public/management/*").hasRole("MANAGER")
-                .antMatchers("/api/public/admin/*").hasRole("ADMIN")
+                .antMatchers("/api/public/admin/*").hasAuthority("ADMIN")
                 .anyRequest().authenticated();
     }
 

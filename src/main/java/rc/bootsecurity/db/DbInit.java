@@ -15,16 +15,12 @@ public class DbInit implements CommandLineRunner {
     private UserRepository userRepository;
 
     private UserRoleRepository userRoleRepository;
-/*
     private PasswordEncoder passwordEncoder;
-*/
 
     public DbInit(UserRepository userRepository, PasswordEncoder passwordEncoder, UserRoleRepository userRoleRepository) {
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
-/*
         this.passwordEncoder = passwordEncoder;
-*/
     }
 
     @Override
@@ -54,7 +50,7 @@ public class DbInit implements CommandLineRunner {
             UserRole userRole = userRoleRepository.findByName("ADMIN");
             userRoles.add(userRole);
 
-            User user = new User("admin", "admin");
+            User user = new User("admin", passwordEncoder.encode("admin"));
             user.setRoles(new HashSet<>(userRoles));
             user.setActive(1);
 
