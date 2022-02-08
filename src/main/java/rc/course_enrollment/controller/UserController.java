@@ -20,10 +20,25 @@ public class UserController {
 
 
     @PostMapping("/registration")
-    private User createUser(@RequestBody User user) throws ValidationException {
+    public User createUser(@RequestBody User user) throws ValidationException {
         return userService.createUser(user);
     }
 
+    @PutMapping("/edit-user")
+    public User editUser(@RequestBody User user){
+        return userService.editUser(user);
+    }
+
+    @DeleteMapping("/delete/user/{id}")
+    public void deleteUser(@PathVariable Long id){
+        userService.deleteUser(id);
+
+    }
+
+    @GetMapping("admin-only")
+    public String adminOnly() {
+        return "ADMIN ONLY ONLY ONLY !!!";
+    }
 
 
 }

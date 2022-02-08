@@ -50,7 +50,7 @@ public class DbInit implements CommandLineRunner {
             userRoles.add(userRole);
 
             User user = new User("admin", passwordEncoder.encode("admin"));
-            user.setRoles(new HashSet<>(userRoles));
+            user.setRoles(userRoles);
             user.setActive(1);
 
             this.userRepository.save(user);
