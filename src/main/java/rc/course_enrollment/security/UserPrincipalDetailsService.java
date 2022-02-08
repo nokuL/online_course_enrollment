@@ -1,11 +1,11 @@
-package rc.bootsecurity.security;
+package rc.course_enrollment.security;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import rc.bootsecurity.db.UserRepository;
-import rc.bootsecurity.model.User;
+import rc.course_enrollment.db.UserRepository;
+import rc.course_enrollment.model.User;
 
 @Service
 public class UserPrincipalDetailsService implements UserDetailsService {

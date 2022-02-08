@@ -1,4 +1,9 @@
-package rc.bootsecurity.model;
+package rc.course_enrollment.model;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -7,6 +12,10 @@ import javax.persistence.ManyToMany;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
 public class Student extends  User{
 
     @ManyToMany

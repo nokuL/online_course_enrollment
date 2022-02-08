@@ -1,4 +1,4 @@
-package rc.bootsecurity;
+package rc.course_enrollment;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
@@ -11,10 +11,10 @@ import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class BootSecurityApplication {
+public class CourseEnrollment {
 
     public static void main(String[] args) {
-        SpringApplication.run(BootSecurityApplication.class, args);
+        SpringApplication.run(CourseEnrollment.class, args);
     }
 
     @Bean

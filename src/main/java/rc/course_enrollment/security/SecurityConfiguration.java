@@ -1,4 +1,4 @@
-package rc.bootsecurity.security;
+package rc.course_enrollment.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,8 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
-import rc.bootsecurity.db.UserRepository;
+import rc.course_enrollment.db.UserRepository;
 
 @Configuration
 @EnableWebSecurity
@@ -25,10 +24,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         this.userRepository = userRepository;
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) {
-        auth.authenticationProvider(authenticationProvider());
-    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -40,13 +35,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 // add jwt filters (1. authentication, 2. authorization)
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(),  this.userRepository))
-                .antMatcher("/registration")
                 .authorizeRequests()
-                // configure access rules
-                .antMatchers(HttpMethod.POST, "/").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/public/registration").permitAll()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
                 .antMatchers("/api/public/admin/*").hasAuthority("ADMIN")
                 .anyRequest().authenticated();
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) {
+        auth.authenticationProvider(authenticationProvider());
     }
 
     @Bean

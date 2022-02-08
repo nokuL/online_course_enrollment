@@ -1,8 +1,8 @@
-package rc.bootsecurity.db;
+package rc.course_enrollment.db;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import rc.bootsecurity.model.User;
+import rc.course_enrollment.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {

@@ -1,4 +1,4 @@
-package rc.bootsecurity;
+package rc.course_enrollment;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

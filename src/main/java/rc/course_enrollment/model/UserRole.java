@@ -1,4 +1,9 @@
-package rc.bootsecurity.model;
+package rc.course_enrollment.model;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,6 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
 public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,22 +26,5 @@ public class UserRole {
         this.name = roleName;
     }
 
-    public UserRole() {
-    }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getRoleName() {
-        return name;
-    }
-
-    public void setRoleName(String roleName) {
-        this.name = roleName;
-    }
 }

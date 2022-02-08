@@ -1,4 +1,4 @@
-package rc.bootsecurity.security;
+package rc.course_enrollment.security;
 
 public class JwtProperties {
     public static final String SECRET = "SomeSecretForJWTGeneration";

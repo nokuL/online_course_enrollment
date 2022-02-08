@@ -1,13 +1,8 @@
-package rc.bootsecurity.controller;
+/*
+package rc.course_enrollment.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import rc.bootsecurity.db.UserRepository;
-import rc.bootsecurity.model.User;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
+import rc.course_enrollment.db.UserRepository;
 
 @RestController
 @RequestMapping("api/public")
@@ -20,7 +15,7 @@ public class PublicRestApiController {
     }
 
     // Available to all authenticated users
-    @GetMapping("registration")
+    @PostMapping("registration")
     public String test1(){
         return "NEW Registration here YEAAAH !";
     }
@@ -37,3 +32,4 @@ public class PublicRestApiController {
         return "@@@@@@@@@@@@@@@@@@@@@@@@";
     }
 }
+*/

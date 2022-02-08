@@ -1,8 +1,17 @@
-package rc.bootsecurity.model;
+package rc.course_enrollment.model;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

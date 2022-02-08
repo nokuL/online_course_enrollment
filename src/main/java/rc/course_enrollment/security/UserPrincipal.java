@@ -1,9 +1,9 @@
-package rc.bootsecurity.security;
+package rc.course_enrollment.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import rc.bootsecurity.model.User;
+import rc.course_enrollment.model.User;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -1,12 +1,11 @@
-package rc.bootsecurity.db;
+package rc.course_enrollment.db;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import rc.bootsecurity.model.User;
-import rc.bootsecurity.model.UserRole;
+import rc.course_enrollment.model.User;
+import rc.course_enrollment.model.UserRole;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.*;
 
 @Service

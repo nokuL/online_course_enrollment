@@ -1,4 +1,4 @@
-package rc.bootsecurity.security;
+package rc.course_enrollment.security;
 
 import com.auth0.jwt.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,7 +7,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import rc.bootsecurity.model.LoginViewModel;
+import rc.course_enrollment.model.LoginViewModel;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
