@@ -9,20 +9,19 @@ import rc.course_enrollment.model.UserRole;
 
 import javax.xml.bind.ValidationException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 @Service
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
 
     @Autowired
-    private UserRoleRepository userRoleRepository;
+     UserRoleRepository userRoleRepository;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+     PasswordEncoder passwordEncoder;
 
     public User createUser( User user) throws ValidationException {
 
@@ -55,5 +54,9 @@ public class UserService {
 
     public void deleteUser(Long id){
         userRepository.deleteById(id);
+    }
+
+    public List<User>findAllUsers(){
+        return  userRepository.findAll();
     }
 }

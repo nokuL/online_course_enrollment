@@ -1,6 +1,8 @@
 package rc.course_enrollment.db;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import rc.course_enrollment.model.User;
@@ -9,18 +11,15 @@ import rc.course_enrollment.model.UserRole;
 import java.util.*;
 
 @Service
+@ComponentScan(basePackages = "rc.course_enrollment.db")
 public class DbInit implements CommandLineRunner {
+   @Autowired
+   UserRepository userRepository;
+   @Autowired
+   UserRoleRepository userRoleRepository;
+   @Autowired
+   PasswordEncoder passwordEncoder;
 
-    private UserRepository userRepository;
-
-    private UserRoleRepository userRoleRepository;
-    private PasswordEncoder passwordEncoder;
-
-    public DbInit(UserRepository userRepository, PasswordEncoder passwordEncoder, UserRoleRepository userRoleRepository) {
-        this.userRepository = userRepository;
-        this.userRoleRepository = userRoleRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
 
     @Override
     public void run(String... args) {

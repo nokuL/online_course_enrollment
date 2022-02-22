@@ -7,16 +7,15 @@ import rc.course_enrollment.model.User;
 import rc.course_enrollment.service.UserService;
 
 import javax.xml.bind.ValidationException;
+import java.util.List;
 
 @RestController
-@RequestMapping("api/public")
+@RequestMapping("api/public/user")
 @CrossOrigin
 public class UserController {
 
     @Autowired
     public UserService userService;
-
-    private PasswordEncoder passwordEncoder;
 
 
     @PostMapping("/registration")
@@ -35,10 +34,11 @@ public class UserController {
 
     }
 
-    @GetMapping("admin-only")
-    public String adminOnly() {
-        return "ADMIN ONLY ONLY ONLY !!!";
+    @GetMapping("/users")
+    public List<User>findAllUsers(){
+        return userService.findAllUsers();
     }
+
 
 
 }

@@ -3,8 +3,11 @@ package rc.course_enrollment.model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.web.bind.annotation.GetMapping;
+import rc.course_enrollment.convertes.GenderConverter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.*;
 
 @Entity
@@ -17,9 +20,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @NotNull
     @Column(nullable = false)
     private String username;
 
+    @NotNull
     @Column(nullable = false, length = 100)
     private String password;
 
@@ -43,7 +48,13 @@ public class User {
   @JoinColumn(name = "address_id")
     private Address address;
 
-    public User(long id, String username, String password, int active, String firstName, String lastName, String email, String phone1, String phone2, List<UserRole> roles, String permissions) {
+    @Enumerated(EnumType.STRING)
+    private  Gender gender;
+
+    public User(long id, String username, String password,
+                int active, String firstName, String lastName,
+                String email, String phone1, String phone2, List<UserRole> roles,
+                String permissions, Address address, Gender gender) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -55,6 +66,8 @@ public class User {
         this.phone2 = phone2;
         this.roles = roles;
         this.permissions = permissions;
+        this.address = address;
+        this.gender = gender;
     }
 
     public User(String username, String password) {
@@ -68,12 +81,18 @@ public class User {
 
     public List<String> getRoleList(){
         List<String>stringList = new ArrayList<>();
-        if(this.roles.size()>0){
-            for (UserRole role : roles) {
-                stringList.add(role.getName());
+        if(this.roles != null){
+            if(this.roles.size()>0){
+                for (UserRole role : roles) {
+                    stringList.add(role.getName());
+                }
             }
-      }
-        return stringList;
+            return stringList;
+
+        }else{
+            return  null;
+        }
+
 
     }
 

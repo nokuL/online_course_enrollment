@@ -1,6 +1,7 @@
 package rc.course_enrollment.security;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -15,13 +16,15 @@ import rc.course_enrollment.db.UserRepository;
 
 @Configuration
 @EnableWebSecurity
+@ComponentScan(basePackages = "rc.course_enrollment.security")
+@ComponentScan(basePackages = "rc.course_enrollment.db")
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-    private UserPrincipalDetailsService userPrincipalDetailsService;
-    private UserRepository userRepository;
+    UserRepository userRepository;
+     UserPrincipalDetailsService userPrincipalDetailsService;
 
-    public SecurityConfiguration(UserPrincipalDetailsService userPrincipalDetailsService, UserRepository userRepository) {
-        this.userPrincipalDetailsService = userPrincipalDetailsService;
+    public SecurityConfiguration(UserRepository userRepository, UserPrincipalDetailsService userPrincipalDetailsService) {
         this.userRepository = userRepository;
+        this.userPrincipalDetailsService = userPrincipalDetailsService;
     }
 
 
@@ -43,7 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/public/admin-only").hasAuthority("ROLE_ADMIN")
 
 
-                .anyRequest().authenticated();
+                .anyRequest().permitAll();
     }
 
     @Override
