@@ -44,6 +44,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/public/admin/*").hasAuthority("ROLE_ADMIN")
                 .antMatchers("/api/public/delete/*").hasAuthority("ROLE_ADMIN")
                 .antMatchers("/api/public/admin-only").hasAuthority("ROLE_ADMIN")
+                .antMatchers("api/public/course/newCourse").hasAuthority("ROLE_ADMIN")
+                .antMatchers("api/public/course/create-course").hasAuthority("ROLE_ADMIN")
+                .antMatchers("api/public/course/edit-course").hasAuthority("ROLE_ADMIN")
+                .antMatchers("api/public/course/delete/*").hasAuthority("ROLE_ADMIN")
+
+
+
 
 
                 .anyRequest().permitAll();

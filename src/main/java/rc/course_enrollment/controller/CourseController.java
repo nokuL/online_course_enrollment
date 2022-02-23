@@ -1,5 +1,4 @@
 package rc.course_enrollment.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import rc.course_enrollment.model.Course;
@@ -18,6 +17,11 @@ public class CourseController {
     public List<Course> getCourses(){
         return courseService.findAllCourses();
 
+    }
+
+    @GetMapping("/newCourse")
+    public Course getNewCourse(){
+        return  new Course();
     }
 
     @PostMapping("/create-course")
