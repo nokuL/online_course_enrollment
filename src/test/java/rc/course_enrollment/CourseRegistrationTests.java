@@ -42,7 +42,7 @@ public class CourseRegistrationTests {
         courseRegistration = new CourseRegistration();
     }
 
-    @Test
+  /*  @Test
     public void createRegistration() throws Exception {
         when(courseRegistrationService.newCourseReg(courseRegistration)).thenReturn(courseRegistration);
         ObjectMapper objectMapper = new ObjectMapper();
@@ -51,10 +51,10 @@ public class CourseRegistrationTests {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(reg_string);
         ResultActions resultActions = mockMvc.perform(mockHttpServletRequestBuilder);
-        MockMvcR
+        Mo
 
 
 
 
-    }
+    }*/
 }

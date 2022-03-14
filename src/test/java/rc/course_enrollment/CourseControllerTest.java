@@ -68,6 +68,7 @@ package rc.course_enrollment;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -113,6 +114,7 @@ public class CourseControllerTest {
     }
 
     @Test
+    @DisplayName("Test find all courses")
     public void testFindAllCourses() throws  Exception{
         List<Course> courseList = new ArrayList<>();
         when(courseService.findAllCourses()).thenReturn(courseList);
@@ -125,6 +127,7 @@ public class CourseControllerTest {
     }
 
     @Test
+    @DisplayName("Test create new course")
     public void testCreateCourse()throws  Exception{
         when(courseService.saveCourse(course)).thenReturn(course);
         ObjectMapper objectMapper = new ObjectMapper();
@@ -139,6 +142,7 @@ public class CourseControllerTest {
     }
 
     @Test
+    @DisplayName("Test edit course")
     public void testEditCourse()throws  Exception{
         when(courseService.editCourse(course)).thenReturn(course);
         ObjectMapper objectMapper = new ObjectMapper();
@@ -154,7 +158,8 @@ public class CourseControllerTest {
     }
 
     @Test
-    public void deleteUserTest() throws  Exception{
+    @DisplayName("Test Delete course")
+    public void deleteCourseTest() throws  Exception{
         doNothing().when(courseRepository).deleteById(1L);
         MockHttpServletRequestBuilder mockHttpServletRequestBuilder = MockMvcRequestBuilders.delete("/api/public/user/delete/user{id}", 1L)
                 .contentType(MediaType.APPLICATION_JSON);
@@ -164,6 +169,7 @@ public class CourseControllerTest {
         int status = response.getStatus();
         Assertions.assertEquals(200, status);
     }
+
 
 
 

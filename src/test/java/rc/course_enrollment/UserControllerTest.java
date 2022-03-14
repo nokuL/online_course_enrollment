@@ -22,6 +22,7 @@ import rc.course_enrollment.db.UserRepository;
 import rc.course_enrollment.model.User;
 import rc.course_enrollment.service.UserService;
 
+import javax.xml.bind.ValidationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,7 +90,6 @@ public class UserControllerTest {
 
     @Test
     public void testCreateUser()throws  Exception{
-
         when(userService.createUser(userObject)).thenReturn(userObject);
         ObjectMapper objectMapper = new ObjectMapper();
         String user_json = objectMapper.writeValueAsString(userObject);
@@ -101,6 +101,14 @@ public class UserControllerTest {
         MvcResult mvcResult = resultActions.andReturn();
         MockHttpServletResponse mockHttpServletResponse = mvcResult.getResponse();
         Assertions.assertEquals(200 , mockHttpServletResponse.getStatus());
+    }
+
+    @Test
+    public void testCreateUserThrowsException() throws ValidationException {
+       // when(userService.createUser(userObject)).thenReturn(userObject);
+        Assertions.assertThrows(ValidationException.class , ()->userService.createUser(new User(null , null)));
+
+
     }
 
     @Test

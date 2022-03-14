@@ -29,7 +29,13 @@ public class UserService {
 
         System.out.println("User sent here"+ user.toString());
         if(userRepository.existsByUsername(user.getUsername())){
-            throw  new ValidationException("User already exists by name"+ user.getUsername());
+            throw  new RuntimeException("User already exists by name"+ user.getUsername());
+        }
+        if(user.getUsername() == null){
+            throw  new RuntimeException("User should have a username");
+        }
+        if(user.getPassword() ==  null){
+            throw  new RuntimeException("User should have password");
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setActive(1);
