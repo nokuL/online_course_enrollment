@@ -27,4 +27,8 @@ public class CourseService {
     public void deleteById(Long id){
          repository.deleteById(id);
     }
+
+    public Course findById(long id){
+      return   repository.findById(id).orElse(null);
+    }
 }

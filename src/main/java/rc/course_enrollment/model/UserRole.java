@@ -1,9 +1,6 @@
 package rc.course_enrollment.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +12,7 @@ import javax.persistence.Id;
 @Setter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,8 +20,9 @@ public class UserRole {
 
     private String name;
 
-    public UserRole(String roleName) {
-        this.name = roleName;
+    public UserRole(String name) {
+        this.name = name;
+
     }
 
 

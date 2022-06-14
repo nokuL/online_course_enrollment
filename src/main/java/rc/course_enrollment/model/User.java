@@ -51,14 +51,10 @@ public class User {
     @Enumerated(EnumType.STRING)
     private  Gender gender;
 
-    public User(long id, String username, String password,
-                int active, String firstName, String lastName,
+    public User(long id, String firstName, String lastName,
                 String email, String phone1, String phone2, List<UserRole> roles,
                 String permissions, Address address, Gender gender) {
         this.id = id;
-        this.username = username;
-        this.password = password;
-        this.active = active;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -68,6 +64,12 @@ public class User {
         this.permissions = permissions;
         this.address = address;
         this.gender = gender;
+    }
+
+    public User(String username, String password, List<UserRole>userRoleList) {
+        this.username = username;
+        this.password = password;
+        this.roles = userRoleList;
     }
 
     public User(String username, String password) {

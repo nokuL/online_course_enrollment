@@ -48,8 +48,7 @@ public class DbInit implements CommandLineRunner {
             UserRole userRole = userRoleRepository.findByName("ADMIN");
             userRoles.add(userRole);
 
-            User user = new User("admin", passwordEncoder.encode("admin"));
-            user.setRoles(userRoles);
+            User user = new User("admin", passwordEncoder.encode("admin"), userRoles);
             user.setActive(1);
 
             this.userRepository.save(user);

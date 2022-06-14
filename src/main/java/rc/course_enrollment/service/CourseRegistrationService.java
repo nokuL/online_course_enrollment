@@ -14,4 +14,16 @@ public class CourseRegistrationService {
 
         return courseRegistrationRepository.save(courseRegistration);
     }
+
+    public void deleteCourseRegistration(long id){
+        courseRegistrationRepository.deleteById(id);
+    }
+
+    public CourseRegistration editCourse(CourseRegistration courseRegistration){
+        return  courseRegistrationRepository.save(courseRegistration);
+    }
+
+    public CourseRegistration findById(long id){
+        return courseRegistrationRepository.findById(id).orElse(null);
+    }
 }
