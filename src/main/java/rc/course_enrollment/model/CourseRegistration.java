@@ -22,4 +22,11 @@ public class CourseRegistration {
     long course_id;
     long course_name;
 
+
+    public CourseRegistration(long course_reg_id, long student_id, long course_id, long course_name) {
+        this.course_reg_id = course_reg_id;
+        this.student_id = student_id;
+        this.course_id = course_id;
+        this.course_name = course_name;
+    }
 }

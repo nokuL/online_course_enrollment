@@ -4,14 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import rc.course_enrollment.db.UserRepository;
-import rc.course_enrollment.db.UserRoleRepository;
 import rc.course_enrollment.model.User;
-import rc.course_enrollment.model.UserRole;
 
 import javax.xml.bind.ValidationException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -20,12 +16,11 @@ public class UserService {
     UserRepository userRepository;
 
     @Autowired
-    UserRoleRepository userRoleRepository;
-
-    @Autowired
     PasswordEncoder passwordEncoder;
 
     public User createUser(User user) throws ValidationException {
+
+        user.setUsername(user.getEmail());
 
 
         System.out.println("User sent here" + user.toString());
@@ -40,13 +35,6 @@ public class UserService {
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setActive(1);
-        List<UserRole> userRoleList = user.getRoles().stream().
-                filter(userRole -> userRoleRepository.existsByName(userRole.getName())).
-                map(userRole -> userRoleRepository.findByName(userRole.getName())).
-                collect(Collectors.toList());
-
-
-        user.setRoles(userRoleList);
         return userRepository.save(user);
     }
 

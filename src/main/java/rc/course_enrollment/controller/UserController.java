@@ -13,15 +13,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/public/user")
-@CrossOrigin
 public class UserController {
 
     @Autowired
     public UserService userService;
 
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/registration")
     public User createUser(@RequestBody User user) throws ValidationException {
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>> "+ user.toString());
         return userService.createUser(user);
     }
 
@@ -45,7 +45,7 @@ public class UserController {
     public User getOneUser(){
         return new User("NOx", "NOx"); }
 
-    @GetMapping("/userTemplate")
+  /*  @GetMapping("/userTemplate")
     public User userTemplate(){
         User user = new User("admin", "admin");
         UserRole userRole = new UserRole(1, "NH");
@@ -55,7 +55,7 @@ public class UserController {
         userRoleList.add(userRole2);
         user.setRoles(userRoleList);
         return user;
-    }
+    }*/
 
 
 }

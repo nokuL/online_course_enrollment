@@ -9,7 +9,6 @@ import java.util.List;
 @RestController
 @RequestMapping("api/public/course")
 public class CourseController {
-
     @Autowired
     CourseService courseService;
 

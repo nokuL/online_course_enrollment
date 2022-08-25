@@ -32,6 +32,11 @@ public class Course {
     @OneToMany(mappedBy = "course")
     private Set<Topic>topics;
 
+    public Course(String description, String name, String code) {
+        this.description = description;
+        this.name = name;
+        this.code = code;
+    }
 
 
 }

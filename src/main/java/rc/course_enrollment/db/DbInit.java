@@ -16,39 +16,15 @@ public class DbInit implements CommandLineRunner {
    @Autowired
    UserRepository userRepository;
    @Autowired
-   UserRoleRepository userRoleRepository;
-   @Autowired
    PasswordEncoder passwordEncoder;
 
 
     @Override
     public void run(String... args) {
 
-        //create Roles
-      List<UserRole>useRoleList = new ArrayList<>();
-      if(!userRoleRepository.existsByName("ADMIN")){
-          UserRole userRole = new UserRole("ADMIN");
-          useRoleList.add(userRole);
-      }
-      if(!userRoleRepository.existsByName("STUDENT")){
-          UserRole userRole1 = new UserRole("STUDENT");
-          useRoleList.add(userRole1);
-      }
-
-      if(!userRoleRepository.existsByName("TUTOR")){
-          UserRole userRole2 = new UserRole("TUTOR");
-          useRoleList.add(userRole2);
-      }
-        userRoleRepository.saveAll(useRoleList);
-
-
       //create admin users
         if(!userRepository.existsByUsername("admin")){
-            List<UserRole>userRoles = new ArrayList<>();
-            UserRole userRole = userRoleRepository.findByName("ADMIN");
-            userRoles.add(userRole);
-
-            User user = new User("admin", passwordEncoder.encode("admin"), userRoles);
+            User user = new User("admin", passwordEncoder.encode("admin"), UserRole.ADMIN);
             user.setActive(1);
 
             this.userRepository.save(user);
